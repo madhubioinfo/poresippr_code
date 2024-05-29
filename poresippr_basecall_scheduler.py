@@ -72,8 +72,14 @@ while True:  # Loop to keep running Guppy and downstream analysis
                     run_command(minimap2_command)
 
                     # Calculating coverage and sorting the output from samtools out
+<<<<<<< HEAD
+                    csv_file = os.path.join(output_dir, f"{barcode_dir}_iteration{iteration}.csv")
+                    samtools_command = f"samtools coverage {bam_file} | cut -f 1,4 | awk '$2 > 0' | sort -rnk 2,2 | sed 's/\\t/,/g' > {csv_file}"
+                    ### oldline samtools_command = f"samtools coverage {bam_file} | cut -f 1,4 | awk '$2 > 0' | sort -rnk 2,2 > {csv_file}"
+=======
                     csv_file = os.path.join(output_dir, f"{barcode_dir}_coverage{iteration}.csv")
                     samtools_command = f"samtools coverage {bam_file} | cut -f 1,4 | awk '$2 > 0' | sort -rnk 2,2 > {csv_file}"
+>>>>>>> origin/main
                     print(f"Running Samtools command sit tight: {samtools_command}")
                     run_command(samtools_command)
 
@@ -81,7 +87,28 @@ while True:  # Loop to keep running Guppy and downstream analysis
                     with open(csv_file, 'r+') as f:
                         content = f.read()
                         f.seek(0, 0)
+<<<<<<< HEAD
+                        f.write("gene_name,number_of_reads_mapped\n" + content)
+                    # before deleting calculate size of the fastq file and add it to the csv file
+                    result = subprocess.run(["ls", "-ltr", concatenated_fastq_file], capture_output=True, text=True)
+                    ls_output = result.stdout
+
+                    # Extract the file size from the ls -ltr output (assuming it's the 5th field)
+                    file_size = int(ls_output.split()[4])
+
+                    # Calculating the division result by using general Ecoli genome size of 5 million bp
+                    genome_coverage_value = file_size / 5000000
+
+                    # Format the output string
+                    output_string = ["genome_coverage", f"{genome_coverage_value}X"]
+
+                    # Append the result to the CSV file
+                    with open(csv_file, mode='a', newline='') as file:
+                        writer = csv.writer(file)
+                        writer.writerow(output_string)
+=======
                         f.write("Stx_type,number_of_reads_mapped\n" + content)
+>>>>>>> origin/main
 
                     # Deleting the temporary concatenated FASTQ files else it will throw a memory error
                     os.remove(concatenated_fastq_file)
@@ -95,3 +122,7 @@ while True:  # Loop to keep running Guppy and downstream analysis
     # Pause execution for 30 minutes before running Guppy again
     print("Waiting for 30 minutes before running Guppy again and redoing analysis all again...")
     time.sleep(1800)
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/main
