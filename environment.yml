@@ -6,7 +6,9 @@ channels:
 dependencies:
   - python=3.8
   - samtools
+  - ont-guppy
   - minimap2
   - pip
+  - awk
   - pip:
-      - csvkit
+  - csvkit
