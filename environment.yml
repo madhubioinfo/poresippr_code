@@ -1,0 +1,12 @@
+name: poresippr-detection
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.8
+  - samtools
+  - minimap2
+  - pip
+  - pip:
+      - csvkit
