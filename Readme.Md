@@ -7,6 +7,5 @@ To set up the Conda environment for this project, follow these steps:
    ```bash
    git clone https://github.com/madhubioinfo/poresippr_code.git
    cd poresippr_code
-   conda env create -f environment.yml
-   conda activate poresippr-detection
+  more to come
 
