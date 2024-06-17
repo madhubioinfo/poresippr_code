@@ -28,7 +28,7 @@ def concatenate_fastq_files(barcode_path, output_file):
 
 def print_usage():
     if "SINGULARITY_NAME" in os.environ:
-        print("Usage: singularity run mycontainer.sif <input.csv>")
+        print("Usage: singularity run --nv mycontainer.sif <input.csv>")
     else:
         print("Usage: python script.py <input.csv>")
 
