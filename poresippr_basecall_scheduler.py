@@ -30,10 +30,10 @@ def print_usage():
     if "SINGULARITY_NAME" in os.environ:
         print("Usage: singularity run --nv mycontainer.sif <input.csv>")
     else:
-        print("Usage: python script.py <input.csv>")
+        print("Usage: python poresippr_basecall_scheduler.py <input.csv>")
 
 # Set up argument parsing
-parser = argparse.ArgumentParser(description='This script runs Guppy and downstream analysis.')
+parser = argparse.ArgumentParser(description='This script runs Guppy basecaller and downstream analysis such as mapping with minimap2 and samtools.')
 parser.add_argument('csv_file_path', help='Path to the input CSV file.')
 args = parser.parse_args()
 
