@@ -11,7 +11,7 @@ Minimap2
 Samtools
 Singularity (optional, when running with singularity container)
 
-##Author
+## Author
 
 Mathu Malar C
 Mathu.Malar@inspection.gc.ca
