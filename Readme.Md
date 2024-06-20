@@ -74,7 +74,7 @@ To run the script as a singularity container, use the following command:
 singularity pull XXXXXXX
 singularity run --nv poresippr_container.sif input.csv
 
-## __Output__
+## Output
 
 **The pipeline will output the following directories:**
 
