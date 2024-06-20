@@ -1,7 +1,7 @@
 # **Poresippr** (under development)
 ![ALT Poresippr](https://github.com/madhubioinfo/poresippr_code/blob/main/newimage.png)
 
-Poresippr is a bioinformatics pipeline it automates the process of running Guppy for basecalling and performs downstream analysis such as mapping with Minimap2 and Samtools. The script takes a CSV input file containing necessary parameters and runs in a loop, continuously processing new data ( every 30 minutes).
+Poresippr is a bioinformatics pipeline that automates the process of running Guppy for basecalling, barcoding and performs downstream analysis such as mapping with Minimap2 and Samtools. The script takes a CSV input file containing the necessary parameters and runs in a loop, continuously processing new data every 30 minutes.
 
 ## Requirements
 
@@ -26,7 +26,8 @@ Singularity (optional, when running with singularity container) <br>
     Installation instructions are found here https://community.nanoporetech.com/docs/prepare/library_prep_protocols/Guppy-protocol/v/gpb_2003_v1_revax_14dec2018/linux-guppy
 
  - **poresippr singularity container**
-     If you don't want to go through the above installation instruction , you can pull the singularity container by singularity pull **  for this you need to have singularity istalled from here https://docs.sylabs.io/guides/3.0/user-guide/installation.html
+     If you don't want to go through the above installation instructions, you can pull the Singularity container using `singularity pull XXXX`. For this, you need to have Singularity installed. You can install it from [here](https://docs.sylabs.io/guides/3.0/user-guide/installation.html).
+
 
 ## Author
 
@@ -35,11 +36,12 @@ Mathu.Malar@inspection.gc.ca
 
 ## Introduction
 
-Poresippr is a python workflow which is run while the nanopore sequencing is in progress. This program is designed to do gpu guppy fast basecalling , barcoding and do the mapping with minimap2 with stx database and calculating the coverage and detecting stx genes. This program is used for rapid detection of virulence genes. The database we use is curated stx genes for classifying the stec types. Also this program run every 30 minutes, until the new nanopore data is written. The poresippr database is available here xxx. 
+Poresippr is a Python workflow designed to run while nanopore sequencing is in progress. This program performs GPU-accelerated Guppy basecalling, barcoding, and mapping with Minimap2 using the stx database. It calculates coverage and detects stx gene targets, facilitating the rapid detection of virulence genes. The database used is curated for stx genes to classify STEC types. Additionally, this program runs every 30 minutes, processing new nanopore data as it becomes available. The Poresippr database is available [here](xxx).
 
-- **guppy basecalling**: Currently this program uses Nanopore Flowcell version R10.4.1 and  Barcode kit was used SQK-RBK114.24. For running guppy nvidia Gpu nodes are required. It also uses the dna_r10.4.1_e8.2_260bps_fast.cfg settings which usually comes with the guppy installation.
+- **guppy basecalling**: Currently, this program uses the Nanopore Flowcell version R10.4.1 and the barcode kit SQK-RBK114.24. Running Guppy requires NVIDIA GPU nodes. The program also uses the `dna_r10.4.1_e8.2_260bps_fast.cfg` settings, which typically come with the Guppy installation.
 
-- **Read Mapping**: Minimap2 was used for mapping nanopore reads with poresippr database XXX  and detects the gene targets using samtools. It ouputs the csv file for every iteration of 30 minutes containing gene targets and genome coverage for the sample. 
+- **Read Mapping**: Minimap2 is used for mapping nanopore reads with the Poresippr database XXX and detects gene targets using samtools. It outputs a CSV file every 30 minutes containing gene targets and genome coverage for each of the sample.
+. 
 
 ## Input requirements
 
@@ -55,11 +57,42 @@ An input CSV file containing the following information is needed. It should incl
 
 ```csv
 reference,fast5_dir,output_dir,config,barcode,barcode_values
-/home/olcbio/PoreSippRDB_240509.fasta,/home/olcbio/240125_MC26299/test,/home/olcbio/240125_MC26299/test_out,dna_r10.4.1_e8.2_260bps_fast.cfg,SQK-RBK114-24,06,07,08,09,10,11
+/home/olcbio/PoreSippRDB_240509.fasta,/home/olcbio/240125_MC26299/test,/home/olcbio/240125_MC26299/test_out,dna_r10.4.1_e8.2_260bps_fast.cfg,SQK-RBK114-24,"06,07,08,09,10,11"
 ```
 
-## Running the code
+## Instructions to run the code
 
+To run the Python script, use the following command:
 
+```sh
+python poresippr_basecall_scheduler.py input.csv
 
+To run the script as a singularity container, use the following command:
+
+```sh
+singularity run --nv poresippr_container.sif input.csv 
+
+## Output
+
+The pipeline will output the following directories:
+
+```
+test_out/
+├── fail
+├── pass
+│   ├── barcode01
+│   └── barcode02
+│   └── barcode..
+│   └── unclassified
+├── barcode01_iteration1.csv
+├── barcode01_iteration2.csv
+├── barcode..XXX.csv
+
+```
+> [!NOTE]
+>Ensure that the barcode numbers are enclosed in double quotes (") as shown in the barcode_values field. This is necessary to correctly parse multiple barcode values.
+
+## Citations
+
+If you use poresippr in your research XXX
 
