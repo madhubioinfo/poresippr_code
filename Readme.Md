@@ -72,15 +72,14 @@ git clone https://github.com/madhubioinfo/poresippr_code.git
 cd poresippr_code
 python poresippr_basecall_scheduler.py input.csv
 
-To run the script as a singularity container, use the following command:
-
+To run the script as a Singularity container, use the following command:
 singularity pull XXXXXXX
 singularity run --nv poresippr_container.sif input.csv
-
 
 ## Output
 
 **The pipeline will output the following files:**
+
 
 test_out/
 ├── fail
@@ -93,8 +92,7 @@ test_out/
 ├── barcode01_iteration2.csv
 ├── barcode..XXX.csv
 
+## Output
 
-## Citations
-
-If you use poresippr in your research XXX
+**The pipeline will output the following files:**
 
