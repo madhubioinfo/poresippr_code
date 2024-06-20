@@ -92,7 +92,7 @@ test_out/
 ├── barcode01_iteration2.csv
 ├── barcode..XXX.csv
 
-## Output
+## citations
 
 **The pipeline will output the following files:**
 
