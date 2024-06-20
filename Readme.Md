@@ -76,18 +76,16 @@ singularity run --nv poresippr_container.sif input.csv
 
 The pipeline will output the following directories:
 
-```
 test_out/
 ├── fail
 ├── pass
 │   ├── barcode01
-│   └── barcode02
-│   └── barcode..
+│   ├── barcode02
+│   ├── barcode..
 │   └── unclassified
 ├── barcode01_iteration1.csv
 ├── barcode01_iteration2.csv
 ├── barcode..XXX.csv
-```
 > [!NOTE]
 >Ensure that the barcode numbers are enclosed in double quotes (") as shown in the barcode_values field. This is necessary to correctly parse multiple barcode values.
 
