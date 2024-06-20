@@ -33,7 +33,7 @@ Singularity (optional, when running with singularity container) <br>
 Mathu Malar C
 Mathu.Malar@inspection.gc.ca
 
-##Introduction
+## Introduction
 
 Poresippr is a python workflow which is run while the nanopore sequencing is in progress. This program is designed to do gpu guppy fast basecalling , barcoding and do the mapping with minimap2 with stx database and calculating the coverage and detecting stx genes. This program is used for rapid detection of virulence genes. The database we use is curated stx genes for classifying the stec types. Also this program run every 30 minutes, until the new nanopore data is written. The poresippr database is available here xxx. 
 
@@ -41,7 +41,7 @@ Poresippr is a python workflow which is run while the nanopore sequencing is in 
 
 - **Read Mapping**: Minimap2 was used for mapping nanopore reads with poresippr database XXX  and detects the gene targets using samtools. It ouputs the csv file for every iteration of 30 minutes containing gene targets and genome coverage for the sample. 
 
-##Input requirements
+## Input requirements
 
 An input CSV file containing the following information is needed. It should include:
 - The location of the Poresippr database (reference)
@@ -58,7 +58,7 @@ reference,fast5_dir,output_dir,config,barcode,barcode_values
 /home/olcbio/PoreSippRDB_240509.fasta,/home/olcbio/240125_MC26299/test,/home/olcbio/240125_MC26299/test_out,dna_r10.4.1_e8.2_260bps_fast.cfg,SQK-RBK114-24,06,07,08,09,10,11
 ```
 
-##Running the code
+## Running the code
 
 
 
