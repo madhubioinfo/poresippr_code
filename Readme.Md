@@ -83,14 +83,17 @@ singularity run --nv poresippr_container.sif input.csv
 
 test_out/
 ├── fail
-├── pass
-│   ├── barcode01
-│   ├── barcode02
-│   ├── barcode..
-│   └── unclassified
-├── barcode01_iteration1.csv
-├── barcode01_iteration2.csv
-├── barcode..XXX.csv
+└── pass
+    ├── barcode01
+    ├── barcode02
+    ├── barcode..
+    └── unclassified
+        ├── barcode01_iteration1.csv
+        └── barcode01_iteration2.csv
+    ├── barcode01_iteration1.csv
+    ├── barcode01_iteration2.csv
+    └── barcode..XXX.csv
+
 
 ## citations
 
