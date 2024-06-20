@@ -60,6 +60,9 @@ reference,fast5_dir,output_dir,config,barcode,barcode_values
 /home/olcbio/PoreSippRDB_240509.fasta,/home/olcbio/240125_MC26299/test,/home/olcbio/240125_MC26299/test_out,dna_r10.4.1_e8.2_260bps_fast.cfg,SQK-RBK114-24,"06,07,08,09,10,11"
 ```
 
+> [!NOTE]
+>Ensure that the barcode numbers are enclosed in double quotes (") as shown in the barcode_values field. This is necessary to correctly parse multiple barcode values.
+
 ## __Instructions to Run the Code__
 
 To run the Python script, use the following command:
@@ -76,7 +79,7 @@ singularity run --nv poresippr_container.sif input.csv
 
 ## Output
 
-**The pipeline will output the following directories:**
+**The pipeline will output the following files:**
 
 test_out/
 ├── fail
@@ -89,8 +92,6 @@ test_out/
 ├── barcode01_iteration2.csv
 ├── barcode..XXX.csv
 
-> [!NOTE]
->Ensure that the barcode numbers are enclosed in double quotes (") as shown in the barcode_values field. This is necessary to correctly parse multiple barcode values.
 
 ## Citations
 
