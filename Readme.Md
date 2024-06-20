@@ -71,9 +71,8 @@ python poresippr_basecall_scheduler.py input.csv
 
 To run the script as a singularity container, use the following command:
 
-```sh
 singularity pull XXXXXXX
-singularity run --nv poresippr_container.sif input.csv 
+singularity run --nv poresippr_container.sif input.csv
 
 ## __Output__
 
