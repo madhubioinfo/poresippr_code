@@ -81,6 +81,7 @@ singularity run --nv poresippr_container.sif input.csv
 
 **The pipeline will output the following files:**
 
+```
 test_out/
 ├── fail
 └── pass
@@ -91,6 +92,7 @@ test_out/
 ├── barcode01_iteration1.csv
 ├── barcode01_iteration2.csv
 └── barcode..XXX.csv
+```
 
 
 ## citations
