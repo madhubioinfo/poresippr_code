@@ -60,16 +60,19 @@ reference,fast5_dir,output_dir,config,barcode,barcode_values
 /home/olcbio/PoreSippRDB_240509.fasta,/home/olcbio/240125_MC26299/test,/home/olcbio/240125_MC26299/test_out,dna_r10.4.1_e8.2_260bps_fast.cfg,SQK-RBK114-24,"06,07,08,09,10,11"
 ```
 
-## Instructions to run the code
+## Instructions to Run the Code
 
 To run the Python script, use the following command:
 
 ```sh
+git clone https://github.com/madhubioinfo/poresippr_code.git
+cd poresippr_code
 python poresippr_basecall_scheduler.py input.csv
 
 To run the script as a singularity container, use the following command:
 
 ```sh
+singularity pull XXXXXXX
 singularity run --nv poresippr_container.sif input.csv 
 
 ## Output
