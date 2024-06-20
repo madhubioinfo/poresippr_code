@@ -5,11 +5,11 @@ Poresippr is a bioinformatics pipeline it automates the process of running Guppy
 
 ## Requirements
 
-Python 3.x
-Guppy basecaller ( This uses nvidia gpu nodes)
-Minimap2
-Samtools
-Singularity (optional, when running with singularity container)
+Python 3.x <br>
+Guppy basecaller ( This uses nvidia gpu nodes) <br>
+Minimap2 <br>
+Samtools <br>
+Singularity (optional, when running with singularity container) <br>
 
 ## Author
 
