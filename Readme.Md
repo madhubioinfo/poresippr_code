@@ -80,7 +80,6 @@ singularity run --nv poresippr_container.sif input.csv
 
 **The pipeline will output the following files:**
 
-
 test_out/
 ├── fail
 ├── pass
