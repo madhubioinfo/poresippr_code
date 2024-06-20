@@ -14,7 +14,7 @@ Singularity (optional, when running with singularity container) <br>
 ## Installation requires ubuntu > 22.0
 
 - **Python 3.0** 
-    sudo apt install python3.12
+    sudo apt install python 3.12
 
 - **Minimap2**
     Install minimap2 and installation instructions from here https://github.com/lh3/minimap2
