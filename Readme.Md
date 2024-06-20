@@ -87,7 +87,6 @@ test_out/
 ├── barcode01_iteration1.csv
 ├── barcode01_iteration2.csv
 ├── barcode..XXX.csv
-
 ```
 > [!NOTE]
 >Ensure that the barcode numbers are enclosed in double quotes (") as shown in the barcode_values field. This is necessary to correctly parse multiple barcode values.
