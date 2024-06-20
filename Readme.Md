@@ -88,11 +88,11 @@ test_out/
     ├── barcode02
     ├── barcode..
     └── unclassified
-├── barcode01_iteration1.csv
-└── barcode01_iteration2.csv
-├── barcode01_iteration1.csv
-├── barcode01_iteration2.csv
-└── barcode..XXX.csv
+        ├── barcode01_iteration1.csv
+        └── barcode01_iteration2.csv
+    ├── barcode01_iteration1.csv
+    ├── barcode01_iteration2.csv
+    └── barcode..XXX.csv
 
 ## citations
 
