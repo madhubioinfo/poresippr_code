@@ -1,0 +1,68 @@
+Bootstrap: docker
+From: nvidia/cuda:11.0.3-base-ubuntu20.04
+
+%help
+    This is a Singularity container for running a script by Mathu Malar C (Mathu.Malar@inspection.gc.ca) that processes FAST5 files and performs downstream analysis using Guppy basecalling, mapping using Minimap2, and coverage calculation using Samtools.
+
+%labels
+    Author Mathu Malar C
+    Email Mathu.Malar@inspection.gc.ca
+
+%post
+    # Update and install necessary packages
+    apt-get update && apt-get install -y \
+        python3 \
+        python3-venv \
+        wget \
+        curl \
+        git \
+        build-essential \
+        zlib1g-dev \
+        libbz2-dev \
+        liblzma-dev \
+        libcurl4-openssl-dev \
+        libssl-dev \
+        libncurses5-dev \
+        libncursesw5-dev
+
+    # Install Guppy
+    wget --no-check-certificate https://cdn.oxfordnanoportal.com/software/analysis/ont-guppy_6.5.7_linux64.tar.gz
+    tar -xzf ont-guppy_6.5.7_linux64.tar.gz -C /opt
+    rm ont-guppy_6.5.7_linux64.tar.gz
+    ln -s /opt/ont-guppy/bin/* /usr/local/bin/
+
+    # Install Minimap2
+    git clone https://github.com/lh3/minimap2
+    cd minimap2 && make
+    cp minimap2 /usr/local/bin/
+    cd .. && rm -rf minimap2
+
+    # Install Samtools
+    wget https://github.com/samtools/samtools/releases/download/1.15.1/samtools-1.15.1.tar.bz2
+    tar -xjf samtools-1.15.1.tar.bz2
+    cd samtools-1.15.1 && ./configure --prefix=/usr/local && make && make install
+    cd .. && rm -rf samtools-1.15.1 samtools-1.15.1.tar.bz2
+
+    # Set up Python virtual environment
+    python3 -m venv /opt/venv
+    . /opt/venv/bin/activate
+
+    # Upgrade pip and install Python packages
+    pip install --upgrade pip
+    pip install csvkit
+
+%files
+    /home/olcbio/code_github/poresippr_code/poresippr_basecall_scheduler.py /usr/local/bin/poresippr_basecall_scheduler.py
+    /home/olcbio/Downloads/PoreSippRDB_240509.fasta /usr/local/bin/PoreSippRDB_240509.fasta
+    /home/olcbio/Downloads/240125_MC26299/test /usr/local/bin/test
+    /home/olcbio/code_github/input.csv /usr/local/bin/input.csv
+
+%environment
+    # Add virtual environment to PATH
+    source /opt/venv/bin/activate
+
+%runscript
+    #!/bin/bash
+    source /opt/venv/bin/activate
+    exec python3 /usr/local/bin/poresippr_basecall_scheduler.py "$@"
+
