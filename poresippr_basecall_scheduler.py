@@ -95,23 +95,19 @@ while True:  # Loop to keep running Guppy and downstream analysis
                         content = f.read()
                         f.seek(0, 0)
                         f.write("gene_name,number_of_reads_mapped\n" + content)
-                    # before deleting calculate size of the fastq file and add it to the csv file
-                    result = subprocess.run(["ls", "-ltr", concatenated_fastq_file], capture_output=True, text=True)
-                    ls_output = result.stdout
+                    # Assuming concatenated_fastq_file is the path to your file
+                    file_size = os.path.getsize(concatenated_fastq_file)
 
-                    # Extract the file size from the ls -ltr output (assuming it's the 5th field)
-                    file_size = int(ls_output.split()[4])
-
-                    # Calculating the division result by using general Ecoli genome size of 5 million bp
-                    genome_coverage_value = file_size / 5000000
-
-                    # Format the output string
-                    output_string = ["genome_coverage", f"{genome_coverage_value}X"]
-
-                    # Append the result to the CSV file
-                    with open(csv_file, mode='a', newline='') as file:
-                        writer = csv.writer(file)
-                        writer.writerow(output_string)
+                    if file_size > 0:
+                        # Proceed with calculations and file operations
+                        genome_coverage_value = file_size / 5000000
+                        output_string = ["genome_coverage", f"{genome_coverage_value}X"]
+                        # Append the result to the CSV file
+                        with open(csv_file, mode='a', newline='') as file:
+                            writer = csv.writer(file)
+                            writer.writerow(output_string)
+                    else:
+                        print(f"Error: Unable to determine file size for {concatenated_fastq_file}")
 
                     # Deleting the temporary concatenated FASTQ files else it will throw a memory error
                     os.remove(concatenated_fastq_file)
