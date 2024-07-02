@@ -72,6 +72,10 @@ git clone https://github.com/madhubioinfo/poresippr_code.git
 cd poresippr_code
 python poresippr_basecall_scheduler.py input.csv
 
+To build the singularity container and run from here use the below command [ need to have sudo access and GPU]
+sudo singularity build poresippr_container.sif cuda_singularity.def
+singularity run --nv poresippr_container.sif input.csv
+
 To run the script as a Singularity container, use the following command:
 singularity pull XXXXXXX
 singularity run --nv poresippr_container.sif input.csv
