@@ -26,7 +26,7 @@ Singularity (optional, when running with singularity container) 4.1.0 <br>
     Installation instructions are found here https://community.nanoporetech.com/docs/prepare/library_prep_protocols/Guppy-protocol/v/gpb_2003_v1_revax_14dec2018/linux-guppy
 
  - **poresippr singularity container**
-     If you don't want to go through the above installation instructions, you can pull the Singularity container using `singularity pull XXXX`. For this, you need to have Singularity installed. You can install it from [here](https://docs.sylabs.io/guides/3.0/user-guide/installation.html).
+     If you don't want to go through the above installation instructions, you can download the Singularity container from here https://zenodo.org/records/12628468. For this, you need to have Singularity installed. You can install it from [here](https://docs.sylabs.io/guides/3.0/user-guide/installation.html).
 
 
 ## Author
