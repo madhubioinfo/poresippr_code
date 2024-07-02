@@ -77,7 +77,6 @@ sudo singularity build poresippr_container.sif cuda_singularity.def
 singularity run --nv poresippr_container.sif input.csv
 
 To run the script as a Singularity container, use the following command:
-singularity pull XXXXXXX
 singularity run --nv poresippr_container.sif input.csv
 ```
 
