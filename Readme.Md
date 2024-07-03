@@ -36,11 +36,11 @@ Mathu.Malar@inspection.gc.ca
 
 ## Introduction
 
-Poresippr is a Python workflow designed to run while nanopore sequencing is in progress. This program performs GPU-accelerated Guppy basecalling, barcoding, and mapping with Minimap2 using the stx database. It calculates coverage and detects stx gene targets, facilitating the rapid detection of virulence genes. The database used is curated for stx genes to classify STEC types. Additionally, this program runs every 30 minutes, processing new nanopore data as it becomes available. The Poresippr database is available [here](xxx).
+Poresippr is a Python workflow designed to run while nanopore sequencing is in progress. This program performs GPU-accelerated Guppy basecalling, barcoding, and mapping with Minimap2 using the stx database. It calculates coverage and detects stx gene targets, facilitating the rapid detection of virulence genes. The database used is curated for stx genes to classify STEC types. Additionally, this program runs every 30 minutes, processing new nanopore data as it becomes available. The Poresippr database is not available for public usage yet.
 
 - **guppy basecalling**: Currently, this program uses the Nanopore Flowcell version R10.4.1 and the barcode kit SQK-RBK114.24. Running Guppy requires NVIDIA GPU nodes. The program also uses the `dna_r10.4.1_e8.2_260bps_fast.cfg` settings, which typically come with the Guppy installation.
 
-- **Read Mapping**: Minimap2 is used for mapping nanopore reads with the Poresippr database XXX and detects gene targets using samtools. It outputs a CSV file every 30 minutes containing gene targets and genome coverage for each of the sample.
+- **Read Mapping**: Minimap2 is used for mapping nanopore reads with the Poresippr database and detects gene targets using samtools. It outputs a CSV file every 30 minutes containing gene targets and genome coverage for each of the sample.
 . 
 
 ## Input requirements
@@ -76,7 +76,7 @@ To build the singularity container and run from here use the below command [ nee
 sudo singularity build poresippr_container.sif cuda_singularity.def
 singularity run --nv poresippr_container.sif input.csv
 
-To download and run the script as a Singularity container, use the following command:
+To download and run the script as a Singularity container, use the following command still need GPU:
 click and download the zipped folder containing code https://zenodo.org/records/12628468
 singularity run --nv poresippr_container.sif input.csv
 ```
