@@ -62,6 +62,22 @@ reference,fast5_dir,output_dir,config,barcode,barcode_values
 
 > [!NOTE]
 >Ensure that the barcode numbers are enclosed in double quotes (") as shown in the barcode_values field. This is necessary to correctly parse multiple barcode values.
+Metadata CSV file containing the following information is needed. It should include:
+- The sequence Id information
+- Barcode numbers 
+- OLC strain ids
+  
+`Metadata.csv`:
+
+```csv
+seqID,strainID,barcode
+2024-MIN-0001,OLCON01,06
+2024-MIN-0002,CFIAOLC-02,07
+2024-MIN-0003,OLCON-03,08
+2024-MIN-0004,OLCON04,09
+2024-MIN-0005,OLCON05,10
+2024-MIN-0006,OLCON06,11
+```
 
 ## __Instructions to Run the Code__
 
@@ -70,15 +86,15 @@ To run the Python script, use the following command:
 ```sh
 git clone https://github.com/madhubioinfo/poresippr_code.git
 cd poresippr_code
-python poresippr_basecall_scheduler.py input.csv
+python poresippr_basecall_scheduler.py input.csv Metadata.csv
 
 To build the singularity container and run from here use the below command [ need to have sudo access and GPU]
 sudo singularity build poresippr_container.sif cuda_singularity.def
-singularity run --nv poresippr_container.sif input.csv
+singularity run --nv poresippr_container.sif input.csv Metadata.csv
 
 To download and run the script as a Singularity container, use the following command still need GPU:
 click and download the zipped folder containing code https://zenodo.org/records/12628468
-singularity run --nv poresippr_container.sif input.csv
+singularity run --nv poresippr_container.sif input.csv Metadata.csv
 ```
 
 ## Output
@@ -93,11 +109,10 @@ test_out/
     ├── barcode02
     ├── barcode..
     └── unclassified
-├── barcode01_iteration1.csv
-├── barcode01_iteration2.csv
-└── barcode..XXX.csv
+├── 2024-MIN-0001_iteration1.csv
+├── 2024-MIN-0002_iteration2.csv
+└── 2024-MIN..XXX.csv
 ```
-
 
 ## citations
 
