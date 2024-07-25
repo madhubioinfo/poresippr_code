@@ -56,7 +56,7 @@ From: nvidia/cuda:11.0.3-base-ubuntu20.04
     /home/olcbio/Downloads/PoreSippRDB_240509.fasta /usr/local/bin/PoreSippRDB_240509.fasta
     /home/olcbio/Downloads/240125_MC26299/test /usr/local/bin/test
     /home/olcbio/code_github/input.csv /usr/local/bin/input.csv
-    /home/olcbio/code_github/Metadata.csv /usr/local/bin/Metadata.csv
+    /home/olcbio/code_github/metadata.csv /usr/local/bin/metadata.csv
 
 %environment
     # Add virtual environment to PATH
