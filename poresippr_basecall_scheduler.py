@@ -53,15 +53,17 @@ if len(sys.argv) != 3:
 csv_file_path = args.csv_file_path
 metadata_csv_path = args.metadata_csv_path
 
-# Read Metadata CSV and create a mapping of barcode to seqID
+# Read Metadata CSV and create a mapping of barcode to seqID and olnid
 barcode_to_seqid = {}
+barcode_to_olnid = {}
 with open(metadata_csv_path, 'r') as metafile:
     meta_reader = csv.DictReader(metafile)
     header = meta_reader.fieldnames
     print(f"Metadata CSV columns: {header}")  # Debug: Print column names
     for row in meta_reader:
         print(f"Row: {row}")  # Debug: Print each row
-        barcode_to_seqid[int(row['barcode'])] = row['seqID']
+        barcode_to_seqid[int(row['Barcode'])] = row['SEQID']
+        barcode_to_olnid[int(row['Barcode'])] = row['OLNID']
 
 def main_loop(complete, iteration):
     while not terminate:  # Loop to keep running Guppy and downstream analysis
@@ -73,7 +75,7 @@ def main_loop(complete, iteration):
                 output_dir = row['output_dir']
                 config = row['config']
                 barcode = row['barcode']
-                barcode_values = [int(x) for x in row['barcode_values'].split(',')]
+                barcode_values = [int(x.strip().replace('"', '')) for x in row['barcode_values'].split(',')]
 
                 # Creating the output directory if it doesn't exist
                 try:
@@ -93,6 +95,7 @@ def main_loop(complete, iteration):
                     barcode_path = os.path.join(output_dir, "pass", barcode_dir)
                     if os.path.isdir(barcode_path):
                         seqid = barcode_to_seqid.get(barcode_num, f"barcode{barcode_num:02d}")
+                        olnid = barcode_to_olnid.get(barcode_num, f"OLN{barcode_num:02d}")
                         concatenated_fastq_file = os.path.join(output_dir, f"{seqid}.fastq")
                         concatenate_fastq_files(barcode_path, concatenated_fastq_file)
 
@@ -165,4 +168,3 @@ if __name__ == "__main__":
         print('Terminating subprocess...')
         p.terminate()
         p.join()
-
