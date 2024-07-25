@@ -67,16 +67,15 @@ Metadata CSV file containing the following information is needed. It should incl
 - Barcode numbers 
 - OLC strain ids
   
-`Metadata.csv`:
+`metadata.csv`:
 
 ```csv
-seqID,strainID,barcode
-2024-MIN-0001,OLCON01,06
-2024-MIN-0002,CFIAOLC-02,07
-2024-MIN-0003,OLCON-03,08
-2024-MIN-0004,OLCON04,09
-2024-MIN-0005,OLCON05,10
-2024-MIN-0006,OLCON06,11
+Barcode,SEQID,OLNID
+06,2022-MIN-0023,OLCX1
+07,2023-MIN-0024,OLC2
+08,2023-MIN-0025,OLC3
+09,2024-MIN-0026,OLC4
+10,2024-MIN-0028,OLC5
 ```
 
 ## __Instructions to Run the Code__
